@@ -115,14 +115,16 @@ function esEsPar(numero) {
 
 ## 3. Capturas de Pantalla
 
-* **Formulario de Registro:** Vista del formulario principal con validaciones dinámicas y avisos de error.
-* (img/index.png)
-* (img/indexError.png)
-* **Ventana Modal:** Visualización del resultado del cálculo de edad mediante un contenedor flotante.
-* (img/modal.png)
-* **Inicio de Sesión:** Interfaz de acceso con control de credenciales.
-* (img/login.png)
-* (img/loginError.png)
+* **Formulario de Registro:** Vista del formulario principal con validaciones dinámicas y avisos de error.  
+  ![Formulario Principal](img/index.png)  
+  ![Errores en el Formulario](img/indexError.png)
+
+* **Ventana Modal:** Visualización del resultado del cálculo de edad mediante un contenedor flotante.  
+  ![Ventana Modal de Edad](img/modal.png)
+
+* **Inicio de Sesión:** Interfaz de acceso con control de credenciales.  
+  ![Inicio de Sesión](img/login.png)  
+  ![Errores de Inicio de Sesión](img/loginError.png)
 
 ---
 
