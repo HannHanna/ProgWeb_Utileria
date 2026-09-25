@@ -116,12 +116,14 @@ function esEsPar(numero) {
 ## 3. Capturas de Pantalla
 
 * **Formulario de Registro:** Vista del formulario principal con validaciones dinámicas y avisos de error.
+* (img/index.png)
+* (img/indexError.png)
 * **Ventana Modal:** Visualización del resultado del cálculo de edad mediante un contenedor flotante.
+* (img/modal.png)
 * **Inicio de Sesión:** Interfaz de acceso con control de credenciales.
+* (img/login.png)
+* (img/loginError.png)
 
 ---
 
-## 4. Enlaces de Despliegue
 
-* **Repositorio en GitHub:** [Insertar enlace al repositorio]
-* **Sitio en vivo (GitHub Pages):** [Insertar enlace de GitHub Pages]
