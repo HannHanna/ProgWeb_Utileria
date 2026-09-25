@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro y Cálculo de Edad | DevSolutions</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        
+    <div class="contenedor-formulario">
+        <h1>Registro de Usuario</h1>
+        <p class="subtitulo">Completa los campos para calcular tu edad y validar tus datos.</p>
+
+        <form class="formulario" id="formRegistro" novalidate>
+            <!-- Grupo 1: Nombre -->
+            <div class="grupo-formulario">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" placeholder="Ej. Ana Pérez">
+                <span id="error-nombre" class="mensaje-error">Error: El nombre solo debe contener letras y acentos.</span>
+            </div>
+
+            <!-- Grupo 2: Correo -->
+            <div class="grupo-formulario">
+                <label for="email">Correo electrónico</label>
+                <input type="text" id="email" placeholder="usuario@ejemplo.com">
+                <span id="error-email" class="mensaje-error">Error: El formato del correo electrónico no es válido.</span>
+            </div>
+
+            <!-- Grupo 3: Teléfono -->
+            <div class="grupo-formulario">
+                <label for="telefono">Número de teléfono (máximo 10 dígitos)</label>
+                <input type="text" id="telefono" placeholder="Ej. 5512345678">
+                <span id="error-telefono" class="mensaje-error">Error: La longitud excede los 10 dígitos permitidos.</span>
+            </div>
+
+            <!-- Grupo 4: Fecha de Nacimiento -->
+            <div class="grupo-formulario">
+                <label for="fechaNacimiento">Fecha de nacimiento</label>
+                <input type="date" id="fechaNacimiento">
+                <span id="error-fecha" class="mensaje-error">Error: Debe seleccionar una fecha de nacimiento válida.</span>
+            </div>
+
+            <button type="submit" class="boton-enviar">Registrar y calcular edad</button>
+            <a href="login.html" class="enlace-navegacion">Ir a login </a>
+        </form>
+    </div>
+
+    <!-- Ventana modal clásica (contenedor div con overlay) -->
+    <div class="modal-overlay" id="modalEdad">
+        <div class="modal-contenido">
+            <h2>Resultado del Registro</h2>
+            <p id="textoModal">Tu edad calculada es: -- años.</p>
+            <button class="boton-enviar" id="cerrarModal">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- Enlazar la librería de utilería -->
+    <script src="js/utileria.js"></script>
+    <script>
+        const formRegistro = document.getElementById('formRegistro');
+        const inputNombre = document.getElementById('nombre');
+        const inputEmail = document.getElementById('email');
+        const inputTelefono = document.getElementById('telefono');
+        const inputFecha = document.getElementById('fechaNacimiento');
+
+        const errorNombre = document.getElementById('error-nombre');
+        const errorEmail = document.getElementById('error-email');
+        const errorTelefono = document.getElementById('error-telefono');
+        const errorFecha = document.getElementById('error-fecha');
+
+        const modalEdad = document.getElementById('modalEdad');
+        const textoModal = document.getElementById('textoModal');
+        const cerrarModal = document.getElementById('cerrarModal');
+
+        formRegistro.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let hayError = false;
+
+            if (!soloLetras(inputNombre.value) || inputNombre.value.trim() === '') {
+                inputNombre.classList.add('error');
+                errorNombre.classList.add('activo');
+                hayError = true;
+            } else {
+                inputNombre.classList.remove('error');
+                errorNombre.classList.remove('activo');
+            }
+
+            if (!validarCorreo(inputEmail.value)) {
+                inputEmail.classList.add('error');
+                errorEmail.classList.add('activo');
+                hayError = true;
+            } else {
+                inputEmail.classList.remove('error');
+                errorEmail.classList.remove('activo');
+            }
+
+            if (inputTelefono.value.trim() === '' || !validarLongitud(inputTelefono.value, 10) || isNaN(inputTelefono.value)) {
+                inputTelefono.classList.add('error');
+                errorTelefono.classList.add('activo');
+                hayError = true;
+            } else {
+                inputTelefono.classList.remove('error');
+                errorTelefono.classList.remove('activo');
+            }
+
+            if (inputFecha.value === '') {
+                inputFecha.classList.add('error');
+                errorFecha.classList.add('activo');
+                hayError = true;
+            } else {
+                inputFecha.classList.remove('error');
+                errorFecha.classList.remove('activo');
+            }
+
+            if (hayError) {
+                return;
+            }
+
+            // Calcular datos utilizando las funciones de la librería
+            const edadCalculada = calcularEdad(inputFecha.value);
+            const esMayor = esMayorDeEdad(inputFecha.value);
+
+            textoModal.innerHTML = `¡Registro exitoso!<br>Tu edad calculada es: <strong>${edadCalculada} años</strong>.<br>` + 
+                                   (esMayor ? "Estado: <strong>Mayor de edad</strong>." : "Estado: <strong>Menor de edad</strong>.");
+            
+            // Mostrar la ventana modal
+            modalEdad.style.display = 'flex';
+        });
+
+        // Ocultar la ventana modal al presionar el botón
+        cerrarModal.addEventListener('click', function() {
+            modalEdad.style.display = 'none';
+            formRegistro.reset();
+        });
+    </script>
+    </body>
+</html>

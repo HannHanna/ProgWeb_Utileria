@@ -1,0 +1,157 @@
+:root{
+    --color-primario: #927dc1;
+    --color-secundario: #4cc9f0;
+    --color-terciario: #e63946;
+    --color-fondo: #f8f9fa;
+    --color-texto: #2b2d42;
+    --color-borde: #e9ecef;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+.contenedor-formulario{
+    max-width: 600px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+h1{
+    text-align: center;
+    font-size: 28px;
+    color: var(--color-primario);
+    margin-bottom: 8px;
+}
+
+.subtitulo{
+    text-align: center;
+    color: #6c757d;
+    margin-bottom: 30px;
+}
+
+.grupo-formulario{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+input, textarea{
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+input:focus, textarea:focus{
+    border-color: var(--color-secundario);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76,201,240,0.2);
+}
+
+.boton-enviar {
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.boton-enviar:hover {
+    background-color: #7b64a8;
+}
+
+/* Estilos para campos con errores */
+input.error, textarea.error {
+    border-color: var(--color-terciario) !important;
+    box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2) !important;
+}
+
+/* Mensaje de texto de error debajo del input */
+.mensaje-error {
+    color: var(--color-terciario);
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.mensaje-error.activo {
+    display: block;
+}
+
+/* Estilos para la ventana modal clásica */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /* Oculto por defecto */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-contenido {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.modal-contenido h2 {
+    color: var(--color-primario);
+    margin-bottom: 15px;
+}
+
+.modal-contenido p {
+    margin-bottom: 20px;
+    color: var(--color-texto);
+}
+
+/* Estilo para el enlace de navegación debajo del botón ingresar */
+.enlace-navegacion {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: var(--color-primario);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.enlace-navegacion:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
